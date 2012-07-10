@@ -7,4 +7,4 @@
         \/                 \//_____/                      \/     \/
 ====================================================================
 ```
-Hungry Academy Project #7 - a Project for DonorsChoose.org
+__Hungry Academy Project #7 - a Project for DonorsChoose.org__
