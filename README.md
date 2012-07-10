@@ -5,6 +5,5 @@
 \    \_\  \  |\   /|  |   |  \/ /_/  >    |   |  | \/\  ___/\  ___/
  \______  /__| \_/ |__|___|  /\___  /|____|   |__|    \___  >\___  >
         \/                 \//_____/                      \/     \/
-====================================================================
 ```
-__Hungry Academy Project #7 - a Project for DonorsChoose.org__
+__==== Hungry Academy Project #7 - a Project for DonorsChoose.org ====__
