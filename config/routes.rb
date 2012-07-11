@@ -1,5 +1,3 @@
-Givingtree::Application.routes.draw do
-  get "welcome/index"
-
+SeedTheLearning::Application.routes.draw do
   root :to => 'welcome#index'
 end

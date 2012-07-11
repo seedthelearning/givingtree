@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Givingtree::Application.load_tasks
+SeedTheLearning::Application.load_tasks
