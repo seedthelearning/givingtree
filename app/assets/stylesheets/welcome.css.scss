@@ -1,3 +1,27 @@
 // Place all the styles related to the welcome controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+div#container {
+  width: 1024px;
+  margin: auto;
+}
+
+div#container h1 {
+  font-size: 42px;
+  text-align: center;
+  margin: 0 auto 20px;
+}
+
+div#container h2 {
+  font-size: 24px;
+  margin: auto;
+}
+
+div#chart {
+  width: 900px;
+  height: 950px;
+  -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+}
