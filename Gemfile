@@ -12,6 +12,7 @@ group :assets do
 end
 
 group :test, :development do
+  gem 'capistrano'
   gem 'rspec-rails'
   gem 'guard-rspec'
 end
