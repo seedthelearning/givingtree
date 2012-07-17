@@ -4,7 +4,7 @@ require 'capistrano/ext/multistage'
 set :stages, %w(production development staging)
 set :default_stage, "development"
 
-set :application, "thin_core"
+set :application, "givingtree"
 set :user, "deployer"
 set :deploy_to, "/home/#{user}/apps/#{application}"
 set :deploy_via, :remote_cache
@@ -12,7 +12,7 @@ set :use_sudo, false
 set :ssh_options, { :forward_agent => true }
 set :git_enable_submodules,1
 set :scm, "git"
-set :repository, "git@github.com:thinchat/#{application}.git"
+set :repository, "git@github.com:seedthelearning/#{application}.git"
 
 default_run_options[:pty] = true
 ssh_options[:forward_agent] = true
