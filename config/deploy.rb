@@ -17,7 +17,7 @@ set :repository, "git@github.com:seedthelearning/#{application}.git"
 default_run_options[:pty] = true
 ssh_options[:forward_agent] = true
 
-after "deploy", "deploy:nginx:config", "deploy:cleanup", "deploy:workers:start" # keep only the last 5 releases
+after "deploy", "deploy:nginx:config", "deploy:cleanup", # "deploy:workers:start" starts resque watch with god
 
 def current_git_branch
   `git symbolic-ref HEAD`.gsub("refs/heads/", "")
@@ -129,6 +129,16 @@ namespace :deploy do
     run "cp #{release_path}/config/secret/database.#{application}.yml #{release_path}/config/database.yml"
   end
   before "deploy:assets:precompile", "deploy:db_config"
+
+  desc "Copy secret files to server"
+  task :secret, roles: :app do
+    run "mkdir #{release_path}/config/secret"
+    file_paths = Dir.glob('config/secret/*')
+    file_paths.each do |file_path|
+      transfer(:up, file_path, "#{release_path}/#{file_path}", :scp => true)
+    end
+  end
+  after "bundle:install", "deploy:secret"
 
   desc "Make sure local git is in sync with remote."
   task :check_revision, roles: :web do
