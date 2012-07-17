@@ -2,21 +2,31 @@
   <h1>Seed The Learning</h1>
 </div>
 <div class='row'>
-  <h2 class='span12'>How Does It Work?</h2>
+  <div id='seed'>
+    <%= form_for @seed do |f| %>
+      <%= content_tag :span, "I will donate", id: 'seed_left_text' %>
+      <%= f.text_field :amount %>
+      <%= content_tag :span, "to", id: 'seed_right_text' %>
+      <%= f.submit "Change The World", class: 'btn-large btn-primary', id: 'submit' %>
+    <% end %>
+  </div>
+</div>
+<div class='row'>
+  <h2 class='span9 offset2'>How Does It Work?</h2>
   <div id='walkthrough'>
-    <div class='span4'>
+    <div class='span3 offset2'>
       <div class='well'>
         <h3>Plant Your Seed</h3>
         <%= image_tag 'seed.jpg', class: 'thumbnail' %>
       </div>
     </div>
-    <div class='span4'>
+    <div class='span3'>
       <div class='well'>
         <h3>Plant Your Seed</h3>
         <%= image_tag 'seed.jpg', class: 'thumbnail' %>
       </div>
     </div>
-    <div class='span4'>
+    <div class='span3'>
       <div class='well'>
         <h3>Plant Your Seed</h3>
         <%= image_tag 'seed.jpg', class: 'thumbnail' %>
