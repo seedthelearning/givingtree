@@ -1,8 +1,9 @@
-source 'https://rubygems.org'
+source :rubygems
 
 gem 'rails', '3.2.3'
 gem 'mysql2'
 gem 'jquery-rails'
+gem 'twitter-bootstrap-rails'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

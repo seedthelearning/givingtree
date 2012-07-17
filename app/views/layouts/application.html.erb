@@ -20,34 +20,10 @@
   </head>
   <body>
 
-    <div class="navbar navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="#">SeedTheLearning</a>
-          <div class="container nav-collapse">
-            <ul class="nav">
-              <li><%= link_to "Login", "/path1"  %></li>
-              <li><%= link_to "Sign up", "/path2"  %></li>
-              <li><%= link_to "Profile", "/path3"  %></li>
-            </ul>
-          </div><!--/.nav-collapse -->
-        </div>
-      </div>
-    </div>
-
     <div class="container">
-      <div class="content">
-        <div class="row">
-          <div class="span9">
-            <%= yield %>
-          </div>
-        </div><!--/row-->
-      </div><!--/content-->
+      <div id='content'>
+        <%= yield %>
+      </div>
 
       <footer>
         <p>&copy; Company 2012</p>

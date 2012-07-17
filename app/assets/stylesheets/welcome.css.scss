@@ -2,25 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-div#container {
-  width: 1024px;
-  margin: auto;
-}
-
-div#container h1 {
-  font-size: 42px;
-  margin: 0 auto 20px;
-}
-
-div#container h2 {
-  font-size: 24px;
-  margin: auto;
-}
-
-div#chart {
-  width: 900px;
-  height: 950px;
-  -webkit-transform: rotate(-90deg);
-  -moz-transform: rotate(-90deg);
-  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+div#header {
+  width: 972px;
+  height: 130px;
+  margin:0 auto;
+  text-indent: -424242px;
+  background:url('header.png') no-repeat top left;
 }
