@@ -7,30 +7,49 @@
       <%= content_tag :span, "I will donate", id: 'seed_left_text' %>
       <%= f.text_field :amount %>
       <%= content_tag :span, "to", id: 'seed_right_text' %>
-      <%= f.submit "Change The World", class: 'btn-large btn-primary', id: 'submit' %>
+      <%= f.submit "Change Kids Lives", class: 'btn-large btn-primary', id: 'submit' %>
     <% end %>
   </div>
 </div>
+
 <div class='row'>
-  <h2 class='span9 offset2'>How Does It Work?</h2>
   <div id='walkthrough'>
-    <div class='span3 offset2'>
+
+    <div class='step span4'>
       <div class='well'>
-        <h3>Plant Your Seed</h3>
-        <%= image_tag 'seed.jpg', class: 'thumbnail' %>
+        <div class='step_left'>
+          <h3>Plant Your Seed</h3>
+          <p>Pledge to donate as little as $1 to help children on DonorsChoose.org get the education they need.</p>
+        </div>
+        <%= image_tag 'walkthrough_seed.png' %>
+        <div class='clearfix'></div>
       </div>
     </div>
-    <div class='span3'>
+
+    <div class='step span4'>
       <div class='well'>
-        <h3>Plant Your Seed</h3>
-        <%= image_tag 'seed.jpg', class: 'thumbnail' %>
+        <div class='step_left'>
+          <h3>Share Your Link</h3>
+          <p>Share the provided link with your friends and family. When they visit we will unlock $1 of your donation, up to the maximum you set.</p>
+        </div>
+        <%= image_tag 'walkthrough_link.png' %>
+        <div class='clearfix'></div>
       </div>
     </div>
-    <div class='span3'>
+
+    <div class='step span4'>
       <div class='well'>
-        <h3>Plant Your Seed</h3>
-        <%= image_tag 'seed.jpg', class: 'thumbnail' %>
+        <div class='step_left'>
+          <h3>Grow Your Tree</h3>
+          <p>Watch your impact grow as visitors sprout new branches on your tree and raise the total your sharing has produced for DonorsChoose.org.</p>
+        </div>
+        <%= image_tag 'walkthrough_kids.jpg' %>
+        <div class='clearfix'></div>
       </div>
     </div>
+
   </div>
+</div>
+
+<div id='tree'>
 </div>
