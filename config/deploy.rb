@@ -17,7 +17,7 @@ set :repository, "git@github.com:seedthelearning/#{application}.git"
 default_run_options[:pty] = true
 ssh_options[:forward_agent] = true
 
-after "deploy", "deploy:nginx:config", "deploy:cleanup" #, "deploy:workers:start"
+after "deploy", "deploy:assets:precompile", "deploy:nginx:config", "deploy:cleanup" #, "deploy:workers:start"
 
 def current_git_branch
   `git symbolic-ref HEAD`.gsub("refs/heads/", "")
@@ -124,12 +124,6 @@ namespace :deploy do
     run "mkdir -p #{fetch :releases_path}"
   end
 
-  desc "Copy secret/database.yml to config/database.yml"
-  task :db_config, roles: :app do
-    run "cp #{release_path}/config/secret/database.#{application}.yml #{release_path}/config/database.yml"
-  end
-  before "deploy:assets:precompile", "deploy:db_config"
-
   desc "Copy secret files to server"
   task :secret, roles: :app do
     run "mkdir #{release_path}/config/secret"
@@ -139,6 +133,12 @@ namespace :deploy do
     end
   end
   after "bundle:install", "deploy:secret"
+
+  desc "Copy secret/database.yml to config/database.yml"
+  task :db_config, roles: :app do
+    run "cp #{release_path}/config/secret/database.#{application}.yml #{release_path}/config/database.yml"
+  end
+  after "deploy:secret", "deploy:db_config"
 
   desc "Make sure local git is in sync with remote."
   task :check_revision, roles: :web do
@@ -168,6 +168,17 @@ namespace :deploy do
       transfer(:up, "config/my.cnf", "/home/deployer/my.cnf", :scp => true)
       sudo "cp /home/deployer/my.cnf /etc/mysql/my.cnf"
       sudo "service mysql restart"
+    end
+  end
+
+  namespace :assets do
+    task :precompile, :roles => :web, :except => { :no_release => true } do
+      from = source.next_revision(current_revision)
+      if capture("cd #{latest_release} && #{source.local.log(from)} vendor/assets/ app/assets/ | wc -l").to_i > 0
+        run %Q{cd #{latest_release} && #{rake} RAILS_ENV=#{rails_env} #{asset_env} assets:precompile}
+      else
+        logger.info "Skipping asset pre-compilation because there were no asset changes"
+      end
     end
   end
 end
