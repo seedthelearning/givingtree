@@ -17,7 +17,7 @@ set :repository, "git@github.com:seedthelearning/#{application}.git"
 default_run_options[:pty] = true
 ssh_options[:forward_agent] = true
 
-after "deploy", "deploy:nginx:config", "deploy:cleanup", # "deploy:workers:start" starts resque watch with god
+after "deploy", "deploy:nginx:config", "deploy:cleanup" #, "deploy:workers:start"
 
 def current_git_branch
   `git symbolic-ref HEAD`.gsub("refs/heads/", "")
