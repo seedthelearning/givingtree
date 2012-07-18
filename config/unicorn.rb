@@ -1,6 +1,3 @@
-require 'resque'
-require 'redis'
-
 root = "/home/deployer/apps/givingtree/current"
 working_directory root
 pid "#{root}/tmp/pids/unicorn.pid"
