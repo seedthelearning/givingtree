@@ -106,7 +106,7 @@ redraw = (data)->
     .attr("transform", (d) -> "rotate(#{d.x - spreadDegrees/2})translate(0,#{-d.y - 50})")
     .append("svg:image")
       .attr("class", "leaf")
-      .attr("xlink:href", "leaf.svg")
+      .attr("xlink:href", "<%= asset_path('leaf.svg') %>")
       .attr("width", "50")
       .attr("height", "50")
       .attr("x", "-25")
