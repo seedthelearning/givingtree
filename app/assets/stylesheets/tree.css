@@ -9,13 +9,21 @@ div#tree {
   stroke: #ccc;
   stroke-width: 1.5px;
 }
+
 .limb {
   fill: none;
   stroke: #5C2616;
   stroke-width: 10px;
 }
+
 .leaf {
   fill: #477628;
   stroke: #395D22;
   stroke-width: 1px;
+}
+
+.trunk {
+  fill: none;
+  stroke: #5C2616;
+  stroke-width: 10px;
 }
