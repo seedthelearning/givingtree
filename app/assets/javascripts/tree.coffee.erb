@@ -1,5 +1,4 @@
-# Update…
-
+svg_path = "<%= asset_path('leaf.svg') %>"
 p = (x) -> console.log(x)
 pt = -> console.log(this)
 
@@ -52,6 +51,7 @@ partitionNodes = (graph) ->
 
   'internal': internal
   'external': external
+  'all':      internal.concat(external)
 
 
 padding = 50
@@ -67,8 +67,11 @@ vis = d3.select("#tree")
     .style("width", w + "px")
     .style("height", w + "px")
   .append("svg:g")
-    #.attr("transform", "rotate(#{-spreadDegrees/2}, #{rx}, #{ry})translate(#{rx},#{ry})")
     .attr("transform", "translate(#{rx},#{ry})")
+
+vis.append("svg:path")
+  .attr("class", "trunk")
+  .attr("d", "M0,0L0,#{w/2}")
 
 redraw = (data)->
   cluster = d3.layout.cluster()
@@ -80,7 +83,9 @@ redraw = (data)->
     .angle((d) -> (d.x - spreadDegrees/2) / 180 * Math.PI)
 
   nodes     = cluster.nodes(data)
-  leafNodes = partitionNodes(data).external
+  nodeList  = partitionNodes(data).all
+
+  # LINES
 
   lines = vis.selectAll("path.limb")
     .data(cluster.links(nodes), (d) -> "#{d.source.id}_#{d.target.id}")
@@ -88,39 +93,48 @@ redraw = (data)->
   lines
     .transition()
     .duration(duration)
-    .attr("class", "limb")
     .attr("d", (d) -> line([d.source, d.target]))
 
   lines.enter()
-    .append("svg:path")
+    .insert("svg:path", ":first-child")
       .attr("class", "limb")
+      .attr("d", (d) -> line([d.source, d.source]))
+      .transition()
+      .duration(duration)
+      .delay(duration)
       .attr("d", (d) -> line([d.source, d.target]))
 
-  leaf = vis.selectAll(".node")
-    .data(leafNodes, (d) -> d.id)
+  # NODES
 
-  leaf.exit().remove()
+  node = vis.selectAll(".node")
+    .data(nodeList, (d) -> d.id)
 
-  leaf.enter().append("svg:g")
-    .attr("class", "node")
+  node.exit().remove()
+
+  node
+    .attr("class", (d) -> if d.children?.length > 0 then "node internal" else "node external")
+    .transition()
+    .duration(duration)
+    .attr("transform", (d) -> "rotate(#{d.x - spreadDegrees/2})translate(0,#{-d.y - 50})")
+
+  node.enter()
+    .append("svg:g")
+    .attr("class", (d) -> if d.children?.length > 0 then "node internal" else "node external")
     .attr("transform", (d) -> "rotate(#{d.x - spreadDegrees/2})translate(0,#{-d.y - 50})")
     .append("svg:image")
+      .transition()
+      .delay(duration*2)
       .attr("class", "leaf")
-      .attr("xlink:href", "<%= asset_path('leaf.svg') %>")
+      .attr("xlink:href", svg_path)
       .attr("width", "50")
       .attr("height", "50")
       .attr("x", "-25")
 
-  leaf
-    .transition()
-    .duration(duration)
-    .attr("transform", (d) -> "rotate(#{d.x - spreadDegrees/2})translate(0,#{-d.y - 50})")
 
 
 #redraw(genData(5))
 iterate = createIterator()
 redraw(iterate())
 
-p genData(3)
 setInterval (-> redraw(iterate()))
           , duration
