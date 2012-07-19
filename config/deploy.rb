@@ -17,7 +17,7 @@ set :repository, "git@github.com:seedthelearning/#{application}.git"
 default_run_options[:pty] = true
 ssh_options[:forward_agent] = true
 
-after "deploy", "deploy:assets:precompile", "deploy:nginx:config", "deploy:cleanup" #, "deploy:workers:start"
+after "deploy", "deploy:nginx:config", "deploy:cleanup" #, "deploy:workers:start"
 
 def current_git_branch
   `git symbolic-ref HEAD`.gsub("refs/heads/", "")
@@ -90,7 +90,7 @@ namespace :deploy do
     sudo "echo '#{rails_env}' > /home/deployer/hostname"
     sudo "mv /home/deployer/hostname /etc/hostname"
     sudo "hostname -F /etc/hostname"
-    sudo "awk -v \"n=2\" -v \"s=127.0.0.1       #{rails_env}.thinchat.com        #{rails_env}\" '(NR==n) { print s } 1' /etc/hosts > /home/deployer/new_hosts"
+    sudo "awk -v \"n=2\" -v \"s=127.0.0.1       #{rails_env}.seedthelearning.com        #{rails_env}\" '(NR==n) { print s } 1' /etc/hosts > /home/deployer/new_hosts"
     sudo "mv /home/deployer/new_hosts /etc/hosts"
   end
 
@@ -156,7 +156,7 @@ namespace :deploy do
       sudo "service nginx restart"
     end
 
-    desc "Copy nginx.conf to thinchat/config and symlink to /etc/nginx/sites-enabled/default "
+    desc "Copy nginx.conf to #{application}/config and symlink to /etc/nginx/sites-enabled/default "
     task :config, roles: :app do
       sudo "ln -nfs #{current_path}/config/nginx.conf /etc/nginx/sites-enabled/default"
     end

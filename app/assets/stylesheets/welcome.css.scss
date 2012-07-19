@@ -48,18 +48,14 @@ div#seed form input#submit {
 }
 
 div#walkthrough div.step_left {
-  width: 65%;
+  width: 63%;
   float: left;
 }
 
 div#walkthrough div.step img {
   width: 29%;
-  float: left;
-  margin-left: 10px;
+  float: right;
+  margin-right: 2px;
   padding: 3px;
   border: 1px solid #CCC;
-}
-
-div#tree {
-  padding: 40px 80px 0;
 }
