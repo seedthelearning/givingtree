@@ -59,8 +59,8 @@ w = 960
 rx = ry = w/2
 limbLen = w/2 - padding
 spreadDegrees = (2/3) * 360
-#duration = 2000
-duration = 250
+duration = 2000
+#duration = 250
 
 vis = d3.select("#tree")
   .append("svg:svg")
@@ -136,5 +136,12 @@ redraw = (data)->
 iterate = createIterator()
 redraw(iterate())
 
-setInterval (-> redraw(iterate()))
-          , duration
+redrawCount = 0
+intervalId =
+  setInterval (->
+    if redrawCount < 100
+      redraw(iterate())
+    else
+      clearInterval(intervalId)
+    redrawCount += 1
+  ), duration
