@@ -1,4 +1,4 @@
 require 'spec_helper'
 
-describe Seed do
+describe User do
 end

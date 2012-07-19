@@ -5,6 +5,7 @@ gem 'mysql2'
 gem 'jquery-rails'
 gem 'twitter-bootstrap-rails'
 gem 'unicorn'
+gem 'devise'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -12,8 +13,12 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-group :test, :development do
+group :development, :test do
   gem 'capistrano'
   gem 'rspec-rails'
   gem 'guard-rspec'
+  gem 'capybara'
+  gem "launchy", "~> 2.1.0"
+  gem 'fabrication'
+  gem 'faker'
 end
