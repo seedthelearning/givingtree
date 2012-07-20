@@ -16,7 +16,7 @@ class SeedsController < ApplicationController
 
   def create_seed(dollars)
     if Seed.create(amount_dollars: dollars)
-      redirect_to update_user_stripe_token_path
+      redirect_to new_stripe_token_path
     else
       render 'welcome#index'
     end
