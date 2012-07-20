@@ -6,6 +6,7 @@ gem 'jquery-rails'
 gem 'twitter-bootstrap-rails'
 gem 'unicorn'
 gem 'devise'
+gem 'money-rails'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

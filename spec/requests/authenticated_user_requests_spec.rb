@@ -4,7 +4,8 @@ describe "Authenticated User" do
   let(:user) { Fabricate.build(:user) }
 
   before(:each) do
-    sign_up_as(user)
+    visit new_user_registration_path
+    submit_sign_up_form_as(user)
     visit root_path
   end
 

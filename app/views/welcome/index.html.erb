@@ -5,7 +5,7 @@
   <div id='seed'>
     <%= form_for @seed do |f| %>
       <%= content_tag :span, "I will donate", id: 'seed_left_text' %>
-      <%= f.text_field :amount %>
+      <%= f.text_field :amount_dollars %>
       <%= content_tag :span, "to", id: 'seed_right_text' %>
       <%= f.submit "Change Kids Lives", class: 'btn-large btn-success', id: 'submit' %>
     <% end %>

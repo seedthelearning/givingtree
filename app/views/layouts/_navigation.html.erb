@@ -2,7 +2,7 @@
   <% if current_user %>
     <li><%= link_to current_user.email, edit_user_registration_path %></li>
    <li> | </li>
-    <li><%= link_to 'sign out', destroy_user_session_path, id: 'sign_out' %></li>
+    <li><%= link_to 'sign out', destroy_user_session_path, method: 'delete', id: 'sign_out' %></li>
   <% else %>
     <li><%= link_to 'sign up', new_user_registration_path, id: 'sign_up' %></li>
     <li> | </li>
