@@ -3,8 +3,10 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : "SeedTheLearning" %></title>
     <%= csrf_meta_tags %>
+    <%= yield :meta_tags %>
+
+    <title><%= content_for?(:title) ? yield(:title) : "SeedTheLearning" %></title>
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
     <!--[if lt IE 9]>
@@ -40,6 +42,7 @@
     <!-- Javascripts
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
+    <%= yield :include_js %>
     <%= javascript_include_tag "application" %>
 
   </body>

@@ -1,1 +1,19 @@
-<%= get_all_the_money %>
+<% content_for :meta_tags %>
+  <%= tag :meta, name: 'stripe-key', content: STRIPE_TEST_PUBLIC %>
+<% end %>
+
+<% content_for :include_js %>
+  <%= javascript_include_tag 'https://js.stripe.com/v1/' %>
+<% end %>
+
+<%= form_for @user do |f| %>
+  <%= label_tag :credit_card_number %>
+  <%= text_field_tag :credit_card_number, nil, name: nil %>
+  <%= label_tag :cvv_code %>
+  <%= text_field_tag :cvv_code, nil, name: nil %>
+  <%= label_tag :expiration_date %>
+  <%= select_month nil, {add_month_numbers: true}, {name: nil, id: "card_month"} %>
+  <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year"} %>
+  <%= f.submit "Donate" %>
+<% end %>
+

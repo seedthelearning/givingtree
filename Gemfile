@@ -6,6 +6,7 @@ gem 'jquery-rails'
 gem 'twitter-bootstrap-rails'
 gem 'unicorn'
 gem 'devise'
+gem 'stripe'
 gem 'money-rails'
 
 group :assets do
