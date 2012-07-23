@@ -82,7 +82,7 @@ end
 God::Contacts::Campfire.defaults do |d|
   d.subdomain = 'hungrymachine'
   d.token     = CAMPFIRE_TOKEN
-  d.room      = 'HA Team 6'
+  d.room      = 'HA Team 2'
   d.ssl       = true
 end
 
