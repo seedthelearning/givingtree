@@ -1,8 +1,8 @@
 class SeedsController < ApplicationController
   include Support::Scooper
-  
+
   def create
-    if current_user 
+    if current_user
       if current_user.stripe_token
         create_seed_or_enter_payment(params[:seed][:amount_dollars])
       else

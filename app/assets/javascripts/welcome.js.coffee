@@ -2,11 +2,12 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
-$('#seed_amount').val('$')
+seed_field = $('#seed_amount_dollars')
+seed_field.val('$')
 
-$('#seed_amount').focus(->
-  $('#seed_amount').val('') if $('#seed_amount').val() == '$'
+seed_field.focus(->
+  seed_field.val('') if seed_field.val() == '$'
 )
-$('#seed_amount').blur(->
-  $('#seed_amount').val('$') if $('#seed_amount').val() == ''
+seed_field.blur(->
+  seed_field.val('$') if seed_field.val() == ''
 )

@@ -2,22 +2,28 @@
   <%= tag :meta, name: 'stripe-key', content: STRIPE_TEST_PUBLIC %>
 <% end %>
 
-<% content_for :include_js do %>
-  <%= javascript_include_tag 'https://js.stripe.com/v1/' %>
-<% end %>
-
 <div id='stripe_error'>
   <noscript>Donations do require javascript. Please enable javascript in your browser and refresh the page.</noscript>
 </div>
 
 <%= form_for @user, html: {id: 'update_user_stripe_token'} do |f| %>
-  <%= label_tag :credit_card_number %>
-  <%= text_field_tag :credit_card_number, nil, name: nil %>
-  <%= label_tag :cvv_code %>
-  <%= text_field_tag :cvv_code, nil, name: nil %>
-  <%= label_tag :expiration_date %>
-  <%= select_month nil, {add_month_numbers: true}, {name: nil, id: "card_month"} %>
-  <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year"} %>
+  <div class='row'>
+    <div class='well span3 offset1'>
+      <h1>Almost there!</h1>
+      <%= label_tag :credit_card_number %>
+      <%= text_field_tag :credit_card_number, nil, name: nil %>
+      <%= label_tag :cvv_code, 'CVV code' %>
+      <%= text_field_tag :cvv_code, nil, name: nil %>
+      <%= label_tag :expiration_date %>
+      <%= select_month nil, {add_month_numbers: true}, {name: nil, id: "card_month"} %>
+      <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year"} %>
+    </div>
+  </div>
+
   <%= f.hidden_field :stripe_token %>
-  <%= f.submit "Donate", id: 'update_token' %>
+  <div class='row'>
+    <div class='span3 offset3'>
+      <%= f.submit "Donate", id: 'update_token', class: 'btn-large btn-success' %>
+    </div>
+  </div>
 <% end %>
