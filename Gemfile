@@ -8,6 +8,7 @@ gem 'unicorn'
 gem 'devise'
 gem 'stripe'
 gem 'money-rails'
+gem 'scoop', :path => "../scoop"
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
