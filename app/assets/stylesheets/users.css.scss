@@ -1,3 +1,43 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+div.link input {
+  width: 360px;
+}
+
+div.social a {
+  display: block;
+  float: left;
+  margin: 5px 10px 0 5px;
+  width: 50px;
+  height: 50px;
+  text-indent: -424242px;
+}
+
+div.social a.twitter {
+  background: url('twitter.png');
+}
+div.social a.facebook {
+  background: url('facebook.png');
+}
+div.social a.pinterest {
+  background: url('pinterest.png');
+}
+
+div.link_left {
+  float: left;
+  width: 400px;
+}
+
+div.link_right {
+  float: right;
+  text-align: right;
+  width: 600px;
+}
+
+div.link_right h2 {
+  float: left;
+  font-size:4em;
+  margin:25px;
+}

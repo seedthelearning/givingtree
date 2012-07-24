@@ -1,13 +1,18 @@
 class UsersController < ApplicationController
   include Support::Scooper
 
+  def show
+    @user = User.find(params[:id])
+    @links = @user.links
+  end
+
   def update
     user = User.find(params[:id])
     user.update_attributes(params[:user])
     response = create_seed(current_user.id, session[:seed_amount_dollars])
     if response[:status] == 201
-      render :text => "YES BOOM FROM USERs"
+      current_user.create_link(response[:link])
+      redirect_to user_path(current_user)
     end
-    # save the seed and send them to their user show page (profile)
   end
 end
