@@ -28,7 +28,7 @@ class SeedsController < ApplicationController
   def create_seed_or_enter_payment(amount_dollars)
     response = create_seed(current_user.id, amount_dollars)
     if response[:status] == 201
-      render :text => "YES BOOM"
+      render :text => "YES BOOM: #{response[:link]}"
     end
   end
 end

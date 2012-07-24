@@ -15,6 +15,7 @@ ActiveRecord::Schema.define(:version => 20120723172548) do
 
   create_table "seeds", :force => true do |t|
     t.integer  "amount_cents"
+    t.string   "link"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
   end

@@ -5,7 +5,7 @@ SeedTheLearning::Application.routes.draw do
 
   match '/create_seed_from_session' => 'seeds#create_from_session', :as => :create_seed_from_session
 
-  resources :seeds, :stripe_tokens, :users
+  resources :seeds, :stripe_tokens, :users, :participants
 
   namespace :api do
     resource :tree
