@@ -1,3 +1,11 @@
 <% @links.each do |link| %>
   <%= render :partial => 'link', :locals => { :link => link } %>
 <% end %>
+<% content_for(:javascript) do %>
+  <% if Rails.env.production? %>
+  givingTree.startRendering("http://seedthelearning.com/api/v1/trees/<%= @links.last.text %>.json")
+  <% else %>
+  givingTree.startRendering("http://localhost:3001/api/v1/trees/<%= @links.last.text %>.json")
+  <% end %>
+<% end %>
+<div id="tree"/>

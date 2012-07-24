@@ -113,6 +113,10 @@ redraw = (data, isInitialRender)->
   nodes     = cluster.nodes(data)
   nodeList  = partitionNodes(data).all
 
+  # The first node.x is NaN, for some unkown reason...
+  if nodeList.length is 1
+    nodeList[0].x = spreadDegrees/2
+
   # LINES
 
   lines = vis.selectAll("path.limb")
@@ -172,5 +176,24 @@ startDemo = ->
       redrawCount += 1
     ), duration
 
+startRendering = (url) ->
+  # Initial render
+  d3.json url, (data) ->
+    redraw(normalizeData(data), true)
+
+  # Render loop
+  renderLoop = ->
+    d3.json url, (data) ->
+      redraw(normalizeData(data), false)
+
+  setInterval(renderLoop, 2000)
+
+# EXPORTS
+@givingTree =
+  'startRendering': startRendering
+  'startDemo': startDemo
+
+<%#redraw({'id':0, 'children': [{'id':1, 'children':[], 'depth':1},{'id':2, 'children':[], 'depth':1}], 'depth':0})%>
+<%#redraw({'id':0, 'children': [], 'depth':0})%>
 <%#startDemo()%>
-redraw(genData(4), true)
+<%#startRendering "http://localhost:3001/api/v1/trees/faa03fc52b7993bf729113868ea8b589.json"%>

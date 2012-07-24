@@ -52,6 +52,11 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <%= javascript_include_tag 'https://js.stripe.com/v1/' %>
     <%= javascript_include_tag "application" %>
+    <script type="text/javascript">
+      //<![CDATA[
+      <%= yield :javascript if content_for? :javascript %>
+      //]]>
+    </script>
 
   </body>
 </html>
