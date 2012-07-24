@@ -11,11 +11,11 @@
   </div>
 
   <div class='link_right'>
-    <h2 class='seed_amount'>$5</h2>
+    <h2 class='seed_amount'>$<%= seed_payout_in_dollars(link.seed_id) %></h2>
     <h2> x </h2>
-    <h2 class='participants'>25</h2>
+    <h2 class='participants'><%= seed_participant_count(link.seed_id) %></h2>
     <h2> = </h2>
-    <h2 class='total_raised'>$1000</h2>
+    <h2 class='total_raised'><%= seed_total_raised(link.seed_id) %></h2>
     <div class='clearfix'></div>
   </div>
 </div>

@@ -1,8 +1,8 @@
 GIT
   remote: git://github.com/seedthelearning/scoop.git
-  revision: de0d996ebefaa62e32f487f290e24d1c342a6b84
+  revision: 65649ff2e6b2b6f2dc32ed8486ae14bbbfbcb001
   specs:
-    scoop (0.0.1)
+    scoop (0.0.3)
       faraday
 
 GEM
@@ -238,7 +238,7 @@ DEPENDENCIES
   rails (= 3.2.3)
   rspec-rails
   sass-rails (~> 3.2.3)
-  scoop!
+  scoop (>= 0.0.3)!
   stripe
   twitter-bootstrap-rails
   uglifier (>= 1.0.3)

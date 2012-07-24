@@ -11,7 +11,7 @@ class UsersController < ApplicationController
     user.update_attributes(params[:user])
     response = create_seed(current_user.id, session[:seed_amount_dollars])
     if response[:status] == 201
-      current_user.create_link(response[:link])
+      current_user.create_link(response[:link], response[:id])
       redirect_to user_path(current_user)
     end
   end
