@@ -53,14 +53,41 @@ partitionNodes = (graph) ->
   'external': external
   'all':      internal.concat(external)
 
+propertiesOf = (obj) ->
+  prop for prop of obj when obj.hasOwnProperty(prop)
+
+# The format that comes from the server isn't ideal.
+# This fixes it up.
+normalizeData = (data) ->
+  normalizeChildren = (obj, depth) ->
+    for id in propertiesOf obj
+      {
+        'id': id
+        'children': normalizeChildren obj[id]['children'], depth+1
+        'depth': depth
+      }
+
+  # The root will be the only object in the array:
+  normalizeChildren(data, 0)[0]
+
+# Applies a function to each node
+eachNode = (tree, fn) ->
+  traverse = (tree) ->
+    for node in tree.children
+      fn node
+      traverse node
+    null
+
+  fn tree
+  traverse tree
 
 padding = 50
 w = 960
 rx = ry = w/2
 limbLen = w/2 - padding
 spreadDegrees = (2/3) * 360
-duration = 2000
-#duration = 250
+#duration = 2000
+duration = 250
 
 vis = d3.select("#tree")
   .append("svg:svg")
@@ -73,10 +100,11 @@ vis.append("svg:path")
   .attr("class", "trunk")
   .attr("d", "M0,0L0,#{w/2}")
 
-redraw = (data)->
+redraw = (data, isInitialRender)->
   cluster = d3.layout.cluster()
     .size([spreadDegrees, limbLen])
     .sort(null)
+    .separation((a, b) -> (if a.parent == b.parent then 1 else 2) / a.depth)
 
   line = d3.svg.line.radial()
     .radius((d) -> d.y)
@@ -101,7 +129,7 @@ redraw = (data)->
       .attr("d", (d) -> line([d.source, d.source]))
       .transition()
       .duration(duration)
-      .delay(duration)
+      .delay((d) -> if isInitialRender then d.source.depth * duration else duration)
       .attr("d", (d) -> line([d.source, d.target]))
 
   # NODES
@@ -123,25 +151,26 @@ redraw = (data)->
     .attr("transform", (d) -> "rotate(#{d.x - spreadDegrees/2})translate(0,#{-d.y - 50})")
     .append("svg:image")
       .transition()
-      .delay(duration*2)
+      .delay((d) -> if isInitialRender then d.depth * duration else duration * 2)
       .attr("class", "leaf")
       .attr("xlink:href", svg_path)
       .attr("width", "50")
       .attr("height", "50")
       .attr("x", "-25")
 
+startDemo = ->
+  iterate = createIterator()
+  redraw(iterate())
 
+  redrawCount = 0
+  intervalId =
+    setInterval (->
+      if redrawCount < 100
+        redraw(iterate())
+      else
+        clearInterval(intervalId)
+      redrawCount += 1
+    ), duration
 
-#redraw(genData(5))
-iterate = createIterator()
-redraw(iterate())
-
-redrawCount = 0
-intervalId =
-  setInterval (->
-    if redrawCount < 100
-      redraw(iterate())
-    else
-      clearInterval(intervalId)
-    redrawCount += 1
-  ), duration
+<%#startDemo()%>
+redraw(genData(4), true)
