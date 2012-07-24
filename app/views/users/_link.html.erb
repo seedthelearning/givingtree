@@ -1,20 +1,21 @@
 <div class='link well span11'>
-  <div id='link_left'>
+  <div class='link_left'>
     <h2>Share this link to grow your tree:</h2>
     <%= text_field_tag 'seed_link', link.url %>
     <div class='social'>
-      <%= link_to 'Tweet', "http://twitter.com/share?text=Visit%20SeedTheLearning.com%20and%20I%20will%20donate%20$1%20to%20DonorsChoose.org!%20Easiest%20Karma%20ever:&url=http://seedthelearning.com/participants/#{link.text}", id: 'twitter' %>
-      <%= link_to 'Share on Facebook', link.facebook_url, id: 'facebook' %>
-      <%= link_to 'Pin It', "http://pinterest.com/pin/create/button/?url=http%3A%2F%2Fseedthelearning.com%2Fparticipants%2F#{link.text}&media=http%3A%2F%2F1337807.com%2Fimages%2Fseedthelearning.png&description=Visit%20SeedTheLearning.com%20and%20I%20will%20donate%20%241%20to%20DonorsChoose.org!%20Easiest%20Karma%20ever.", id: 'pinterest' %>
+      <%= link_to 'Tweet', "http://twitter.com/share?text=Visit%20SeedTheLearning.com%20and%20I%20will%20donate%20$1%20to%20DonorsChoose.org!%20Easiest%20Karma%20ever:&url=http://seedthelearning.com/participants/#{link.text}", class: 'twitter' %>
+      <%= link_to 'Share on Facebook', link.facebook_url, class: 'facebook' %>
+      <%= link_to 'Pin It', "http://pinterest.com/pin/create/button/?url=http%3A%2F%2Fseedthelearning.com%2Fparticipants%2F#{link.text}&media=http%3A%2F%2F1337807.com%2Fimages%2Fseedthelearning.png&description=Visit%20SeedTheLearning.com%20and%20I%20will%20donate%20%241%20to%20DonorsChoose.org!%20Easiest%20Karma%20ever.", class: 'pinterest' %>
       <div class='clearfix'></div>
     </div>
   </div>
 
-  <div id='link_right'>
-    <h2 id='seed_amount'>$5</h2>
-    <h2> + </h2>
-    <h2 id='participants'>25</h2>
+  <div class='link_right'>
+    <h2 class='seed_amount'>$5</h2>
+    <h2> x </h2>
+    <h2 class='participants'>25</h2>
     <h2> = </h2>
-    <h2 id='total_raised'>$1000</h2>
+    <h2 class='total_raised'>$1000</h2>
+    <div class='clearfix'></div>
   </div>
 </div>

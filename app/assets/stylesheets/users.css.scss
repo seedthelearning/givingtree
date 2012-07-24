@@ -15,26 +15,30 @@ div.social a {
   text-indent: -424242px;
 }
 
-div.social a#twitter {
+div.social a.twitter {
   background: url('twitter.png');
 }
-div.social a#facebook {
+div.social a.facebook {
   background: url('facebook.png');
 }
-div.social a#pinterest {
+div.social a.pinterest {
   background: url('pinterest.png');
 }
 
-div#link_left {
+// the hover rules for these sprites are in bootstrap overrides
+
+div.link_left {
   float: left;
   width: 400px;
 }
-div#link_right {
+
+div.link_right {
   float: right;
-  width: 400px;
+  text-align: right;
+  width: 600px;
 }
 
-div#link_right h2 {
+div.link_right h2 {
   float: left;
   font-size:4em;
   margin:25px;
