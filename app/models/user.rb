@@ -6,8 +6,8 @@ class User < ActiveRecord::Base
 
   has_many :links
 
-  def create_link(link)
-    self.links << Link.create(text: link)
+  def create_link(link, seed_id)
+    self.links << Link.create(text: link, seed_id: seed_id)
     save
   end
 end

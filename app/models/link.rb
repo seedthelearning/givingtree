@@ -1,5 +1,5 @@
 class Link < ActiveRecord::Base
-  attr_accessible :text, :user_id
+  attr_accessible :text, :user_id, :seed_id
 
   belongs_to :user
 
