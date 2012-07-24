@@ -9,7 +9,7 @@ gem 'devise'
 gem 'stripe'
 gem 'money-rails'
 gem 'faraday'
-# gem 'scoop', :path => "../scoop"
+gem 'scoop', :git => 'git://github.com/seedthelearning/scoop.git'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
