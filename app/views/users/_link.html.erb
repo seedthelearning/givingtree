@@ -1,0 +1,7 @@
+<div class='link well span11'>
+  <h2>Share this link to grow your tree:</h2>
+  <%= text_field_tag 'seed_link', link.url %>
+  <a href="https://twitter.com/share" class="twitter-share-button" data-url="<%= link.url %>" data-text="Visit SeedTheLearning.com and I will donate $1 to DonorsChoose.org! Easiest Karma ever:" data-size="large" data-count="none">Tweet</a>
+  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+  <%= link_to 'Share on Facebook', link.facebook_url %>
+</div>
