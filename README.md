@@ -7,3 +7,15 @@
         \/                 \//_____/                      \/     \/
 ```
 __==== Hungry Academy Project #7 - a Project for DonorsChoose.org ====__
+
+```
+git clone git://github.com/seedthelearning/givingtree.git
+cd givingtree
+rake db:create
+rake db:migrate
+rake db:test:prepare
+rails s
+```
+
+Note that this application requires git://github.com/seedthelearning/granary.git
+running on port 3001.
