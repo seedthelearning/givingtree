@@ -52,5 +52,14 @@ describe "Unauthenticated User" do
       submit_sign_up_form_as(new_user)
       page.should have_field 'credit_card_number'
     end
+
+    it "should accept payment information after signing in" do
+      submit_seed_form
+      submit_sign_in_form_as(existing_user)
+      fill_in 'credit_card_number', :with => "4242424242424242"
+      fill_in 'cvv_code',:with => "111"
+      click_on 'Donate'
+      page.should have_field('seed_link', :with => existing_user.links.last.url)
+    end
   end
 end
