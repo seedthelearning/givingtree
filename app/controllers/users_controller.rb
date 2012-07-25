@@ -3,8 +3,11 @@ class UsersController < ApplicationController
   include Support::Planter
 
   def show
-    @user = User.find(params[:id])
-    @links = @user.links
+    if current_user 
+        @links = current_user.links
+    else 
+      authenticate_user!
+    end
   end
 
   def update
