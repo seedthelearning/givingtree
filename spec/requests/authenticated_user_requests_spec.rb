@@ -10,10 +10,6 @@ describe "Authenticated User" do
   end
 
   context "viewing the welcome page" do
-    it "should see their email address" do
-      page.should have_link user.email
-    end
-
     it "should see a sign out link" do
       page.should have_link 'sign_out'
     end

@@ -45,14 +45,12 @@ describe "Unauthenticated User" do
       submit_seed_form
       submit_sign_in_form_as(existing_user)
       page.should have_field 'credit_card_number'
-      page.should have_field 'credit_card_expiration'
     end
 
-    xit "should be prompted for their payment information after signing up" do
+    it "should be prompted for their payment information after signing up" do
       submit_seed_form
       submit_sign_up_form_as(new_user)
       page.should have_field 'credit_card_number'
-      page.should have_field 'credit_card_expiration'
     end
   end
 end

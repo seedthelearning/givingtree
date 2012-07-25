@@ -1,8 +1,12 @@
 <div id='navigation_bg'>
   <ul id='navigation' class='well'>
     <% if current_user %>
-      <li><%= link_to 'your tree', user_path(current_user) %></li>
-     <li> | </li>
+      <% if current_user.links.count > 0 %>
+        <li><%= link_to 'your tree', user_path(current_user) %></li>
+        <li> | </li>
+      <% end %>
+      <li><%= link_to 'home', root_path %></li>
+      <li> | </li>
       <li><%= link_to 'sign out', destroy_user_session_path, method: 'delete', id: 'sign_out' %></li>
     <% else %>
       <li><%= link_to 'sign up', new_user_registration_path, id: 'sign_up' %></li>
