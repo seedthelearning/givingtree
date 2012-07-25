@@ -11,6 +11,7 @@ __==== Hungry Academy Project #7 - a Project for DonorsChoose.org ====__
 ```
 git clone git://github.com/seedthelearning/givingtree.git
 cd givingtree
+bundle
 rake db:create
 rake db:migrate
 rake db:test:prepare
