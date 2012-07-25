@@ -87,7 +87,7 @@ w = 960
 rx = ry = w/2
 limbLen = w/2 - padding
 spreadDegrees = (2/3) * 360
-duration = 2000
+duration = 1250
 
 vis = d3.select("#tree")
   .append("svg:svg")
@@ -171,6 +171,8 @@ redraw = (data, isInitialRender)->
 
 startDemo = ->
   iterate = createIterator()
+  # Create the first branch
+  iterate();
   redraw(iterate(), true)
 
   redrawCount = 0
