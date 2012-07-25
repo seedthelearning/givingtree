@@ -23,5 +23,4 @@ rake db:test:prepare
 rails s
 ```
 
-Note that this application requires git://github.com/seedthelearning/granary.git
-running on port 3001.
+Note that this application requires [granary](https://github.com/seedthelearning/granary) running on port 3001.
