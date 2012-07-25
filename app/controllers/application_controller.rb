@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
     elsif current_user.links.count > 0
       user_path(current_user)
     else
-      super
+      root_path
     end
   end
 end
