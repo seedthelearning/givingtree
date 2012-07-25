@@ -24,3 +24,7 @@ rails s
 ```
 
 Note that this application requires [granary](https://github.com/seedthelearning/granary) running on port 3001.
+You can specify a port for a rails application like this:
+```
+rails s -p 3001
+```
