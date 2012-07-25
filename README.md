@@ -15,6 +15,8 @@ cd givingtree
 Trust the .rvmrc file
 ```
 bundle
+mkdir config/secret
+echo "STRIPE_TEST_SECRET = 'oDusEP1ECiTzNoh4LFYpHslWJwfQXWRA'; STRIPE_TEST_PUBLIC = 'pk_dqkXc3OX98bXpsQiGfHwvUOtO664W'" > config/secret/stripe_keys.rb
 rake db:create
 rake db:migrate
 rake db:test:prepare
