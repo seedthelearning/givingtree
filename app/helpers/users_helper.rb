@@ -5,7 +5,7 @@ module UsersHelper
 
   def seed_amount_in_dollars(seed_id)
     response = SCOOP_CLIENT.get_seed(seed_id)
-    convert_cents_to_dollars(response[:donation][:amount_cents].to_i)
+    convert_cents_to_dollars(response[:donation][:amount_cents].to_i) if response[:donation]
   end
 
   def seed_payout_in_dollars(seed_id)
