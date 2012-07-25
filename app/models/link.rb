@@ -4,7 +4,7 @@ class Link < ActiveRecord::Base
   belongs_to :user
 
   def url
-    "#{HOST_URL}#{text}"
+    "#{HOST_URL}participants/#{text}"
   end
 
   def facebook_url

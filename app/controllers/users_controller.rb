@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   include Support::Scooper
+  include Support::Planter
 
   def show
     @user = User.find(params[:id])
@@ -9,10 +10,6 @@ class UsersController < ApplicationController
   def update
     user = User.find(params[:id])
     user.update_attributes(params[:user])
-    response = create_seed(current_user.id, session[:seed_amount_dollars])
-    if response[:status] == 201
-      current_user.create_link(response[:link], response[:id])
-      redirect_to user_path(current_user)
-    end
+    plant_seed(session[:seed_amount_dollars])
   end
 end
