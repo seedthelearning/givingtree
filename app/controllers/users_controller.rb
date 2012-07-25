@@ -4,8 +4,8 @@ class UsersController < ApplicationController
 
   def show
     if current_user 
-        @links = current_user.links
-    else 
+      @links = current_user.links
+    else
       authenticate_user!
     end
   end

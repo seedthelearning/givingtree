@@ -1,7 +1,11 @@
 module UsersHelper
-
   def get_seed_data(seed_id)
     response = SCOOP_CLIENT.get_seed(seed_id)
+  end
+
+  def seed_amount_in_dollars(seed_id)
+    response = SCOOP_CLIENT.get_seed(seed_id)
+    convert_cents_to_dollars(response[:donation][:amount_cents].to_i)
   end
 
   def seed_payout_in_dollars(seed_id)
@@ -22,5 +26,4 @@ module UsersHelper
   def convert_cents_to_dollars(amount_cents)
     amount_cents/100
   end
-
 end
