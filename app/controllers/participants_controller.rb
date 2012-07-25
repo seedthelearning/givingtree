@@ -20,6 +20,7 @@ class ParticipantsController < ApplicationController
 private
   
   def create_participant_and_render(seed_id)
+    session[:seeding] = seed_id
     response = create_participant(current_user.id, seed_id)
     if response[:status] == 201
       flash[:alert] = "You've unlocked $1. Why not plant your own seed?"

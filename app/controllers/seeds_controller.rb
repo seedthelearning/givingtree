@@ -33,7 +33,12 @@ class SeedsController < ApplicationController
   private
 
   def create_seed_or_enter_payment(amount_dollars)
-    response = create_seed(current_user.id, amount_dollars)
+    if session[:seeding]
+      response = create_reseed(current_user.id, session.delete(:seeding), amount_dollars)
+    else
+      response = create_seed(current_user.id, amount_dollars)
+    end
+
     if response[:status] == 201
       current_user.create_link(response[:link], response[:id])
       redirect_to user_path(current_user)
