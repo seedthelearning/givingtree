@@ -1,3 +1,5 @@
+previous_data = null
+
 update_totals = ->
   request = $.get "/api/tree/values"
   request.success (data) -> insertValues(data)
@@ -8,7 +10,8 @@ unless $('ul.seed_values').length == 0
   , 1500
 
 insertValues = (data) ->
-  console.log(data)
-  $('h2.seed_amount').text('$' + data.seed)
-  $('h2.participants').text(data.clicks)
-  $('h2.total_raised').text('$' + data.tree)
+  if data != previous_data
+    previous_data = data
+    console.log(data)
+    $('h2.participants').text(data.clicks) unless data.clicks == null
+    $('h2.total_raised').text('$' + data.tree) unless data.tree == null
