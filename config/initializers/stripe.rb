@@ -1,6 +1,6 @@
 require './config/secret/stripe_keys'
 
-if Rails.env == false
+if Rails.env == 'off'
   Stripe.api_key = STRIPE_LIVE_SECRET
   STRIPE_PUBLIC = STRIPE_LIVE_PUBLIC
 else
