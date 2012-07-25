@@ -37,7 +37,22 @@ div.link_right {
 }
 
 div.link_right h2 {
-  float: left;
   font-size:4em;
-  margin:25px;
+}
+
+div.link_right ul {
+  float: right;
+  text-align: center;
+  list-style-type: none;
+}
+
+div.link_right li {
+  float: left;
+  margin-right:40px;
+}
+
+div.link_right li p {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-bottom:15px;
 }
