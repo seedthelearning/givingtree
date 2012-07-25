@@ -6,9 +6,9 @@
 <% content_for(:javascript) do %>
   <% unless @links.empty? %>
     <% if Rails.env.production? %>
-    givingTree.startRendering("http://seedthelearning.com/trees/<%= @links.last.text %>.json")
+    givingTree.startRendering("http://seedthelearning.com/api/trees/<%= @links.last.text %>.json")
     <% else %>
-    givingTree.startRendering("http://localhost:3000/trees/<%= @links.last.text %>.json")
+    givingTree.startRendering("http://localhost:3000/api/trees/<%= @links.last.text %>.json")
     <% end %>
   <% end %>
 <% end %>

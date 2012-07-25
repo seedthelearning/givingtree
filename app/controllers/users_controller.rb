@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   include Support::Planter
 
   def show
-    if current_user 
+    if current_user
       @links = current_user.links
     else
       authenticate_user!
