@@ -3,7 +3,7 @@
 <% end %>
 <% content_for(:javascript) do %>
   <% if Rails.env.production? %>
-  givingTree.startRendering("http://seedthelearning.com/api/v1/trees/<%= @links.last.text %>.json")
+  givingTree.startRendering("http://50.116.37.154:8080/granary/api/v1/trees/<%= @links.last.text %>.json")
   <% else %>
   givingTree.startRendering("http://localhost:3001/api/v1/trees/<%= @links.last.text %>.json")
   <% end %>
