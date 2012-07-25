@@ -23,4 +23,5 @@ stripe_token =
       $('#update_user_stripe_token').get(0).submit()
     else
       $('#stripe_error').text(response.error.message)
+      $('#stripe_error').addClass('alert alert-error')
       $('#update_token').attr('disabled', false)
