@@ -1,6 +1,11 @@
 require "bundler/capistrano"
 require 'capistrano/ext/multistage'
 
+# whenever integration
+set :whenever_command, "bundle exec whenever"
+require "whenever/capistrano"
+
+
 set :stages, %w(production development staging)
 set :default_stage, "development"
 
