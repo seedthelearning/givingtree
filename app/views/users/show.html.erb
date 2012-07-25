@@ -5,7 +5,7 @@
   <% if Rails.env.production? %>
   givingTree.startRendering("http://seedthelearning.com/trees/<%= @links.last.text %>.json")
   <% else %>
-  givingTree.startRendering("http://localhost:3001/trees/<%= @links.last.text %>.json")
+  givingTree.startRendering("http://localhost:3000/trees/<%= @links.last.text %>.json")
   <% end %>
 <% end %>
 <div id="tree"/>
