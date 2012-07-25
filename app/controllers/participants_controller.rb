@@ -5,7 +5,6 @@ class ParticipantsController < ApplicationController
     seed_id = params[:id]
     if current_user
       create_participant_and_render(seed_id)
-      flash[:alert] = "You've unlocked $1. Why not plant your own seed?"
     else
       session[:seed_id] = seed_id
       flash[:alert] = "Almost there! Log in to unlock $1 and help seed the learning."
@@ -16,7 +15,6 @@ class ParticipantsController < ApplicationController
   def create_from_session  
     seed_id = session.delete(:seed_id)
     create_participant_and_render(seed_id)
-    flash[:alert] = "You've unlocked $1. Why not plant your own seed?"
   end
 
 private
@@ -24,9 +22,11 @@ private
   def create_participant_and_render(seed_id)
     response = create_participant(current_user.id, seed_id)
     if response[:status] == 201
-      render :json => SCOOP_CLIENT.get_tree(seed_id)
+      flash[:alert] = "You've unlocked $1. Why not plant your own seed?"
     else
-      render :text => "sad times fails"
+      flash[:alert] = "Sorry you've already unlocked a donation from this seed. 
+                       Why not plant your own seed?"
     end
+    redirect_to root_path
   end
 end
