@@ -12,7 +12,6 @@ unless $('ul.seed_values').length == 0
 insertValues = (data) ->
   if data != previous_data
     previous_data = data
-    console.log(data)
     $('h2.seed').text('$' + data.seed) if data.seed
     $('h2.clicks').text(data.clicks) if data.clicks
     $('h2.total').text('$' + data.total) if data.total
