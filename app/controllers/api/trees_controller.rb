@@ -16,7 +16,7 @@ class Api::TreesController < ApplicationController
     values = {
       seed: seed_amount_in_dollars(id),
       clicks: seed_participant_count(id),
-      tree: seed_total_raised(id)
+      total: seed_total_raised(id)
     }
 
     respond_to do |format|
