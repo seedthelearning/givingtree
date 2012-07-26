@@ -24,6 +24,6 @@ module UsersHelper
   end
 
   def convert_cents_to_dollars(amount_cents)
-    amount_cents/100
+    amount_cents.to_i/100
   end
 end
