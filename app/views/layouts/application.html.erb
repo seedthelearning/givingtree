@@ -25,10 +25,10 @@
 
         <%= render :partial => 'layouts/navigation' %>
 
-        <% if flash[:block] %>
+        <% if flash[:alert] %>
           <div class="alert alert-success">
             <button class="close" data-dismiss="alert">×</button>
-            <%= flash[:block] %>
+            <%= flash[:alert] %>
           </div>
         <% end %>
 

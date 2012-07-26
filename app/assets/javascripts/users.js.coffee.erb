@@ -13,5 +13,9 @@ insertValues = (data) ->
   if data != previous_data
     previous_data = data
     console.log(data)
-    $('h2.participants').text(data.clicks) unless data.clicks == null
-    $('h2.total_raised').text('$' + data.tree) unless data.tree == null
+    $('h2.seed').text('$' + data.seed) if data.seed && isInteger(data.seed)
+    $('h2.clicks').text(data.clicks) if data.clicks && isInteger(data.clicks)
+    $('h2.total').text('$' + data.total) if data.total && isInteger(data.total)
+
+isInteger = (num) ->
+  (num + '').match(/^d+$/)

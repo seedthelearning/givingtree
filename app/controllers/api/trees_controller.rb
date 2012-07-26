@@ -14,6 +14,7 @@ class Api::TreesController < ApplicationController
     id = current_user.links.last.seed_id
 
     values = {
+      seed: seed_amount_in_dollars(id),
       clicks: seed_participant_count(id),
       tree: seed_total_raised(id)
     }
